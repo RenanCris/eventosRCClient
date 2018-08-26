@@ -1,0 +1,6 @@
+img, button {
+    cursor: pointer
+}
+p[id='obs']{
+    color: red;
+}

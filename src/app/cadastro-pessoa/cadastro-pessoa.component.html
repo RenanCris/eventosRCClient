@@ -1,0 +1,56 @@
+<div class="middle-box text-center loginscreen animated fadeInDown">
+    <div>
+        <div>
+            <img class="img-fluid" src="assets/img/logo.png" routerLink="">
+        </div>
+        <hr>
+        <p>Formulário de Cadastro de Pessoa</p>
+        <p id="obs">Obs: Todos os dados são obrigatórios</p>
+
+        <form #formPessoa="ngForm" (submit)="cadastrar($event)" class="m-t" role="form">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Nome" name="nome" [(ngModel)]="pessoa.nome" required="">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="CPF" mask="999.999.999-99" [(ngModel)]="pessoa.cpf" pattern="([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})" 
+                 name="cpf" ngModel required="" #cpf="ngModel">
+            </div>
+            <div class="form-group">
+                <input type="email" class="form-control" placeholder="Email" [(ngModel)]="pessoa.email"
+                name="email" pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?" required="">
+            </div>
+            <div class="form-group">
+                <input type="date" class="form-control" name="nascimento" [(ngModel)]="pessoa.nascimento" placeholder="Nascimento" required="">
+            </div>
+            <div class="form-group">
+                <h4 class="float-left">Sexo</h4>
+                <label>
+                     <input type="radio" value="M" id="sexoM" name="sexo" [(ngModel)]="pessoa.sexo"> Masculino&nbsp;
+                     <input type="radio" value="F" id="sexoF" name="sexo" [(ngModel)]="pessoa.sexo"> Feminino
+                </label>
+            </div>
+            <div class="form-group">
+                <div class="row " style="margin:0px !important;">
+                    <input type="text" class="form-control col-md-4" placeholder="CEP" mask="99999-999" [(ngModel)]="pessoa.endereco.cep" name="cep" required="">
+                    <input type="text" class="form-control col-md-8" placeholder="Rua"  name="rua" [(ngModel)]="pessoa.endereco.rua" required="">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row " style="margin:0px !important;">
+                    <input type="text" class="form-control col-md-3" placeholder="N" mask="9999" [(ngModel)]="pessoa.endereco.numero" name="numero" required="">
+                    <input type="text" class="form-control col-md-9" placeholder="Bairro"  [(ngModel)]="pessoa.endereco.bairro" name="bairro" required="">
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Cidade" name="cidade" [(ngModel)]="pessoa.endereco.cidade" required="">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Estado" name="estado" [(ngModel)]="pessoa.endereco.estado" required="">
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" placeholder="Password" name="senha" [(ngModel)]="pessoa.senha" required="">
+            </div>
+            <button  type="submit" [disabled]="!formPessoa.valid" class="btn btn-primary block full-width m-b">Confirmar Registro</button>
+        </form>
+    </div>
+</div>

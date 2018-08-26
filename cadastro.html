@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>INSPINIA | Register</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="css/plugins/iCheck/custom.css" rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+</head>
+
+<body class="gray-bg">
+
+    <div class="middle-box text-center loginscreen animated fadeInDown">
+        <div>
+            <div>
+                <img class="img-fluid" src="img/logo.png">
+            </div>
+            <p><h3>Formulário de Cadastro de Pessoa</h3></p>
+            <p>Crie sua conta aqui.</p>
+            <form class="m-t" role="form" action="login.html">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Nome" required="">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="CPF" required="">
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control" placeholder="Email" required="">
+                </div>
+                <div class="form-group">
+                    <input type="date" class="form-control" placeholder="Nascimento" required="">
+                </div>
+                <div class="form-group">
+                    <h4 class="float-left">Sexo</h4>
+                    <label>
+                         <input type="radio" checked="" value="M" id="" name="sexo"> Masculino&nbsp;
+                         <input type="radio" checked="" value="F" id="" name="sexo"> Feminino
+                    </label>
+                </div>
+                <div class="form-group">
+                    <div class="row " style="margin:0px !important;">
+                        <input type="text" class="form-control col-md-4" placeholder="CEP" required="">
+                        <input type="text" class="form-control col-md-8" placeholder="RUA" required="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row " style="margin:0px !important;">
+                        <input type="text" class="form-control col-md-3" placeholder="N" required="">
+                        <input type="text" class="form-control col-md-9" placeholder="Bairro" required="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Cidade" required="">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Estado" required="">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" placeholder="Password" required="">
+                </div>
+                
+                <button type="submit" class="btn btn-primary block full-width m-b">Confirmar Registro</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Mainly scripts -->
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <!-- iCheck -->
+    <script src="js/plugins/iCheck/icheck.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green',
+            });
+        });
+    </script>
+</body>
+
+</html>
