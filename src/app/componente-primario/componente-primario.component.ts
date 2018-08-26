@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-declare var $ :any;
+import { NgZone } from '@angular/core';
 
 @Component({
   selector: 'app-componente-primario',
@@ -8,10 +8,10 @@ declare var $ :any;
 })
 export class ComponentePrimarioComponent implements OnInit {
 
-  constructor() { }
+  constructor(private zone: NgZone) { }
 
   ngOnInit() {
-   
+    
   }
 
 }

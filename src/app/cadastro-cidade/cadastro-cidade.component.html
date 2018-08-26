@@ -10,16 +10,23 @@
                         <div class="col-sm-6 b-r">
                             <h3 class="m-t-none m-b">Registro de Cidades</h3>
                             <p>Criação de Cidades.</p>
-                            <form role="form">
+                            <form #formCidade="ngForm" (submit)="cadastrar($event)" role="form">
                                 <div class="form-group">
-                                    <label>Tipo do Evento</label>
+                                    <label>Nome da cidade</label>
+                                    <input type="text" placeholder="Descriação" name="descricao" [(ngModel)]="cidade.descricao" required class="form-control">
                                 </div>
                             </form>
+                            <div>
+                                <button [disabled]="!formCidade.valid" class="btn btn-sm btn-primary float-right m-t-n-xs" type="submit">
+                                    <strong>Confirmar</strong>
+                                </button>
+                            </div>
                         </div>
                         <div class="col-sm-6">
                             <h4>Todos as Cidades</h4>
                         </div>
                     </div>
+                    
                 </div>
             </div>
         </div>

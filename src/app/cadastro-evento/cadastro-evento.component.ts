@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Evento } from './evento.model';
+
+declare var $ : any;
 
 @Component({
   selector: 'app-cadastro-evento',
@@ -7,9 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CadastroEventoComponent implements OnInit {
 
+  evento : Evento = new Evento();
+  
   constructor() { }
 
   ngOnInit() {
+    $(function(){
+      $('.chosen-select').chosen({ width: "100%" });
+    }); 
   }
 
 }

@@ -17,7 +17,8 @@ import { CadastroPessoaComponent } from './cadastro-pessoa/cadastro-pessoa.compo
 import { CadastroCidadeComponent } from './cadastro-cidade/cadastro-cidade.component';
 import { ComponentNoPadraoComponent } from './component-no-padrao/component-no-padrao.component';
 import { ComponentePrimarioComponent } from './componente-primario/componente-primario.component';
-import {NgxMaskModule} from 'ngx-mask'
+import {NgxMaskModule} from 'ngx-mask';
+import { CurrencyMaskModule } from "ngx-currency-mask";
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import {NgxMaskModule} from 'ngx-mask'
     BrowserModule,
     routing,
     FormsModule,
-    NgxMaskModule.forRoot()
+    NgxMaskModule.forRoot(),
+    CurrencyMaskModule
   ],
   providers: [],
   bootstrap: [AppComponent]

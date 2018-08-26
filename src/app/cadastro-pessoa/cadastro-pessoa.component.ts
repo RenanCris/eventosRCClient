@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
 import { Router } from '@angular/router';
+import swal from 'sweetalert2/dist/sweetalert2.js'
+import { Pessoa } from './pessoa.model';
 
 @Component({
   selector: 'app-cadastro-pessoa',
@@ -9,21 +11,7 @@ import { Router } from '@angular/router';
 })
 export class CadastroPessoaComponent implements OnInit {
 
-  pessoa: Object = {
-    nome:'',
-    cpf:'',
-    email:'',
-    nascimento:'',
-    sexo:'M',
-    endereco:{
-      cep:'',
-      rua:'',
-      numero:'',
-      bairro:'',
-      cidade:'',
-      estado:''
-    }
-  };
+  pessoa: Pessoa = new Pessoa();
 
   constructor(private router: Router) { }
 
@@ -32,7 +20,17 @@ export class CadastroPessoaComponent implements OnInit {
 
   cadastrar(event){
     event.preventDefault();
-    this.router.navigate(['/secundario', {outlets: {'sec':'login'}}]); 
+
+    const toast = swal({
+      type: 'success',
+      title: 'Confirmado...',
+      text: 'CadastroRealizado!',
+      showConfirmButton: false,
+      timer: 1000,
+      allowOutsideClick : false
+    }).then((result) => {
+      this.router.navigate(['/secundario', {outlets: {'sec':'login'}}]); 
+    })
   }
 
 }
