@@ -1,23 +1,19 @@
 <div class="row justify-content-md-center">
     <div class="col-lg-12">
         <h4 class="text-center m">
-            Todos Eventos do Mês
+            Todos Eventos
         </h4>
         <div class="slick">
-            <div>
-                <div class="contact-box center-version">
-                    <a href="profile.html">
-                        <img alt="image" class="rounded-circle" src="assets/img/esporte-min.png">
+            <div *ngFor='let evento of eventos; trackBy: index;'>
+                <div class="contact-box center-version" >
+                    <a role="button" href="#">
+                        <img alt="image" class="rounded-circle" src="assets/img/{{evento.img}}-min.png">
                         <h3 class="m-b-xs">
-                            <strong>John Smith</strong>
+                            <strong>{{evento.descricao}}</strong>
                         </h3>
-                        <div class="font-bold">Graphics designer</div>
+                        <div class="font-bold">{{evento.data | date:'d/M/yyyy'}}</div>
                         <address class="m-t-md">
-                            <strong>Twitter, Inc.</strong>
-                            <br> 795 Folsom Ave, Suite 600
-                            <br> San Francisco, CA 94107
-                            <br>
-                            <abbr title="Phone">P:</abbr> (123) 456-7890
+                                {{evento.cidade}} - {{evento.endereco}}
                         </address>
                     </a>
                     <div class="contact-box-footer">

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-
+import { GeralService } from '../services/service.geral';
+import { Cidade } from '../cadastro-cidade/cidade.model';
+import {interval} from "rxjs";
+import { Evento } from '../cadastro-evento/evento.model';
 declare var $: any;
 
 @Component({
@@ -9,12 +12,19 @@ declare var $: any;
 })
 export class PesquisaComponent implements OnInit {
 
-  constructor() { }
+  cidades : Array<Cidade>;
+
+  constructor(private service: GeralService) { 
+    this.service.ObterCidades().subscribe((dados) =>{
+      this.cidades = dados;
+    })
+  }
 
   ngOnInit() {
     $(function(){
-      $('.chosen-select').chosen({ width: "100%" });
+      interval(1000).subscribe(()=>{
+        $('.chosen-select').chosen({ width: "100%" });
+      })
     }); 
   }
-
 }

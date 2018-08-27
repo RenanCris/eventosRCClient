@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Cidade } from './cidade.model';
+import { GeralService } from '../services/service.geral';
+import {NgForm} from '@angular/forms';
 
 @Component({
   selector: 'app-cadastro-cidade',
@@ -9,10 +11,21 @@ import { Cidade } from './cidade.model';
 export class CadastroCidadeComponent implements OnInit {
 
   cidade : Cidade = new Cidade();
+  cidades : Array<Cidade>;
 
-  constructor() { }
+  constructor(private service: GeralService) { 
+    this.service.ObterCidades().subscribe((dados) =>{
+      this.cidades = dados;
+    })
+  }
 
   ngOnInit() {
+  }
+
+  cadastrar(){
+    this.service.CadastrarCidade(this.cidade).subscribe((dados) => {
+      this.cidades.push(this.cidade);
+    })
   }
 
 }

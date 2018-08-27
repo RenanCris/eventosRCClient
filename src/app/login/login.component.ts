@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {NgForm} from '@angular/forms';
+import { AutorizacaoService } from '../services/service.token';
+import { Login } from './login.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -8,9 +11,20 @@ import {NgForm} from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  login: Login = new Login();
+
+  constructor(private service: AutorizacaoService,private router: Router) { }
 
   ngOnInit() {
+  }
+
+  logar(event){
+    event.preventDefault();
+
+    this.service.setToken(this.login).subscribe((dados) => {
+      localStorage.setItem("token",dados.access_token);
+      this.router.navigate(['/principal', {outlets: {'pri':'inicial'}}]); 
+    })
   }
 
 }

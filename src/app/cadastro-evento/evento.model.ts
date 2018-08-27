@@ -4,7 +4,9 @@ export class Evento {
     endereco:string;
     qtd:number;
     valor:number;
-
+    tipoEvento:string;
+    cidade:string;
+    
     constructor(){
         
     }

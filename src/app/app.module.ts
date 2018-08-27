@@ -19,6 +19,10 @@ import { ComponentNoPadraoComponent } from './component-no-padrao/component-no-p
 import { ComponentePrimarioComponent } from './componente-primario/componente-primario.component';
 import {NgxMaskModule} from 'ngx-mask';
 import { CurrencyMaskModule } from "ngx-currency-mask";
+import { GeralService } from './services/service.geral';
+import { AutorizacaoService } from './services/service.token';
+import { HttpModule } from '@angular/http';
+import { Select2Module } from 'ng2-select2';
 
 @NgModule({
   declarations: [
@@ -42,9 +46,11 @@ import { CurrencyMaskModule } from "ngx-currency-mask";
     routing,
     FormsModule,
     NgxMaskModule.forRoot(),
-    CurrencyMaskModule
+    CurrencyMaskModule,
+    HttpModule,
+    Select2Module
   ],
-  providers: [],
+  providers: [GeralService, AutorizacaoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

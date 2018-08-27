@@ -11,13 +11,13 @@
         </div>
         <div class="col-md-6">
             <div class="ibox-content">
-                <form  #formLogin="ngForm" class="m-t" role="form">
+                <form  #formLogin="ngForm" (submit)="logar($event)" class="m-t" role="form">
                     <div class="form-group">
-                        <input type="email" name="email" ngModel class="form-control" placeholder="E-mail" 
-                        required="" pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?">
+                        <input type="text" name="email" [(ngModel)] = "login.cpf" class="form-control" placeholder="Cpf" 
+                        required mask="999.999.999-99" pattern="([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})" >
                     </div>
                     <div class="form-group">
-                        <input type="password" name="senha" ngModel class="form-control" placeholder="Senha" required="">
+                        <input type="password" name="senha" [(ngModel)] = "login.senha" class="form-control" placeholder="Senha" required="">
                     </div>
                     <button type="submit" [disabled]="!formLogin.valid" class="btn btn-primary block full-width m-b">Login</button>
                     <a class="btn btn-sm btn-white btn-block" [routerLink]="['/secundario',{outlets: {sec:['cadastro']}}]">Criar nova Conta</a>
