@@ -14,7 +14,7 @@
                                 <div class="form-group">
                                     <label>Tipo do Evento</label>
                                     <select class="select"aria-placeholder="Selecione" autocomplete="false" name="tipoEvento" [(ngModel)]="evento.tipoEvento">
-                                        <option ngValue="">Selecione</option>
+                                        <option ngValue="" selected disabled>Selecione</option>
                                         <option ngValue="Esporte">Esporte</option>
                                         <option ngValue="Show">Show</option>
                                         <option ngValue="Teatro">Teatro</option>
@@ -31,17 +31,13 @@
                                 <div class="form-group">
                                     <label>Cidade</label>
                                     <select class="select" name="cidade" autocomplete="false" [(ngModel)]="evento.cidade">
-                                        <option ngValue="" selected>Selecione</option>
+                                        <option value="" selected disabled>Selecione</option>
                                         <option ngValue="{{cidade.descricao}}" *ngFor='let cidade of cidades; trackBy: index;'>{{cidade.descricao}}</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label>Localização</label>
                                     <textarea placeholder="Endereço completo" autocomplete="off" name="endereco" [(ngModel)]="evento.endereco" required class="form-control"></textarea>
-                                </div>
-                                <div class="form-group">
-                                    <label>Quantidade ingressos</label>
-                                    <input type="number" placeholder="Qtd" name="qtd" [(ngModel)]="evento.qtd" required class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label>Valor Unitário</label>

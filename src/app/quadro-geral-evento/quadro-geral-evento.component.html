@@ -5,23 +5,14 @@
                 <h5>Quadro de Eventos Geral </h5>
             </div>
             <div class="ibox-content">
-                <div class="row">
-                    <div class="col-sm-9"></div>
-                    <div class="col-sm-3">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control form-control-sm" placeholder="Pesquisar">
-                        </div>
-                    </div>
-                </div>
                 <div class="table-responsive">
                     <table class="table table-striped">
                         <thead>
                             <tr>
-                                <th>#</th>
+                                <th>Comprar</th>
                                 <th>Evento </th>
+                                <th>Tipo Evento </th>
                                 <th>Data </th>
-                                <th>Ingressos Vendidos </th>
-                                <th>Ingressos Disponível </th>
                                 <th>Valor Uni</th>
                                 <th>Cidade</th>
                                 <th>Local</th>
@@ -29,11 +20,16 @@
                         </thead>
                         <tbody>
                             <tr *ngFor='let evento of eventos; trackBy: index;'>
-                                <td>{{$index}}</td>
+                                <td>
+                                    <div class="m-t-xs btn-group">
+                                        <div (click)="addCart(evento)" class="btn btn-sm btn-primary">
+                                            <i class="fa fa-money"></i> Comprar Igresso 
+                                        </div>
+                                    </div>
+                                </td>
                                 <td>{{evento.descricao}}</td>
+                                <td>{{evento.tipoEvento}}</td>
                                 <td>{{evento.data | date:'d/M/yyyy'}}</td>
-                                <td>{{evento.qtd}}</td>
-                                <td>{{evento.qtd}}</td>
                                 <td>{{evento.valor | currency:'BRL'}}</td>
                                 <td>{{evento.cidade}}</td>
                                 <td>{{evento.endereco}}</td>

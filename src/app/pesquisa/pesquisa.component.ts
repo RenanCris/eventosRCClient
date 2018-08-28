@@ -3,7 +3,8 @@ import { GeralService } from '../services/service.geral';
 import { Cidade } from '../cadastro-cidade/cidade.model';
 import {interval} from "rxjs";
 import { Evento } from '../cadastro-evento/evento.model';
-declare var $: any;
+import { EventEmitter } from 'events';
+import { FiltroService } from '../services/service.filtro';
 
 @Component({
   selector: 'app-pesquisa',
@@ -14,17 +15,23 @@ export class PesquisaComponent implements OnInit {
 
   cidades : Array<Cidade>;
 
-  constructor(private service: GeralService) { 
+  constructor(private service: GeralService, private filtro: FiltroService) { 
     this.service.ObterCidades().subscribe((dados) =>{
       this.cidades = dados;
     })
   }
 
+  consultarCidade = new EventEmitter();
+
+  filtrarCidade(cidade){
+    this.filtro.filtroCidade(cidade);
+  }
+
+  filtrarEvento(evento){
+    this.filtro.filtroEvento(evento);
+  }
+
   ngOnInit() {
-    $(function(){
-      interval(1000).subscribe(()=>{
-        $('.chosen-select').chosen({ width: "100%" });
-      })
-    }); 
+   
   }
 }

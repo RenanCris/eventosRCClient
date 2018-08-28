@@ -5,16 +5,19 @@
           <i class="fa fa-reorder"></i>
       </button>
       <div class="navbar-collapse collapse" id="navbar">
-          <ul class="nav navbar-nav mr-auto">
+          <ul  class="nav navbar-nav mr-auto">
               <li class="dropdown">
                   <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown"> Menu</a>
                   <ul role="menu" class="dropdown-menu">
-                      <li>
+                      <li *ngIf="IsAdmin()">
                           <a [routerLink]="['/principal',{outlets: {pri:['evento']}}]">Cadastro de Evento</a>
                       </li>
-                      <li>
+                      <li *ngIf="IsAdmin()">
                           <a [routerLink]="['/principal',{outlets: {pri:['cidade']}}]">Cadastro de Cidades</a>
                       </li>
+                      <li>
+                        <a [routerLink]="['/principal',{outlets: {pri:['compras']}}]">Minhas Compras</a>
+                       </li>
                       <li>
                           <a routerLink="">Inicial</a>
                       </li>
@@ -22,10 +25,16 @@
               </li>
           </ul>
           <ul class="nav navbar-top-links navbar-right">
+              <li *ngIf="!IsDadosToken()">
+                <span class="m-r-sm text-muted welcome-message">Seja bem vindo(a) <strong>{{nome}}</strong>!</span>
+              </li>
               <li>
-                  <a [routerLink]="['/secundario',{outlets: {sec:['login']}}]">
-                      <i class="fa fa-sign-out"></i> Entrar
+                  <a *ngIf="IsDadosToken()" [routerLink]="['/secundario',{outlets: {sec:['login']}}]">
+                      <i class="fa fa-sign-in"></i> Entrar
                   </a>
+                  <a *ngIf="!IsDadosToken()" (click)="EfetuarLogout()">
+                    <i class="fa fa-sign-out"></i> Logout
+                </a>
               </li>
           </ul>
       </div>

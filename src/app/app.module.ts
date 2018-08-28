@@ -23,6 +23,14 @@ import { GeralService } from './services/service.geral';
 import { AutorizacaoService } from './services/service.token';
 import { HttpModule } from '@angular/http';
 import { Select2Module } from 'ng2-select2';
+import { CartService } from './services/service.carrinho';
+import { CarrinhoDetalheComponent } from './carrinho-detalhe/carrinho-detalhe.component';
+import { CompraCartaoComponent } from './cartao/cartao.component';
+import { CompraService } from './services/service.compra';
+import { FiltroService } from './services/service.filtro';
+import { HttpsRequestInterceptor } from './provider/http.provider';
+import { MinhasComprasComponent } from './minhas-compras/minhas-compras.component';
+
 
 @NgModule({
   declarations: [
@@ -39,7 +47,10 @@ import { Select2Module } from 'ng2-select2';
     CadastroPessoaComponent,
     CadastroCidadeComponent,
     ComponentNoPadraoComponent,
-    ComponentePrimarioComponent
+    ComponentePrimarioComponent,
+    CarrinhoDetalheComponent,
+    CompraCartaoComponent,
+    MinhasComprasComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +61,7 @@ import { Select2Module } from 'ng2-select2';
     HttpModule,
     Select2Module
   ],
-  providers: [GeralService, AutorizacaoService],
+  providers: [GeralService, AutorizacaoService, CartService, CompraService,FiltroService, HttpsRequestInterceptor],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

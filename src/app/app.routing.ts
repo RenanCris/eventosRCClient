@@ -10,12 +10,16 @@ import { ComponentePrimarioComponent } from "./componente-primario/componente-pr
 import { CadastroPessoaComponent } from "./cadastro-pessoa/cadastro-pessoa.component";
 import { CadastroEventoComponent } from "./cadastro-evento/cadastro-evento.component";
 import { CadastroCidadeComponent } from "./cadastro-cidade/cadastro-cidade.component";
+import { CarrinhoDetalheComponent } from "./carrinho-detalhe/carrinho-detalhe.component";
+import { MinhasComprasComponent } from "./minhas-compras/minhas-compras.component";
 
 const routes: Routes = [
     { path: 'principal', component: ComponentePrimarioComponent , children: [
         { path:'evento', component: CadastroEventoComponent,outlet:'pri'},
         { path:'inicial', component: InicialComponent,outlet:'pri'},
-        { path:'cidade', component: CadastroCidadeComponent,outlet:'pri'}
+        { path:'cidade', component: CadastroCidadeComponent,outlet:'pri'},
+        { path:'carrinhoDetalhe', component: CarrinhoDetalheComponent,outlet:'pri'},
+        { path:'compras', component: MinhasComprasComponent,outlet:'pri'}
     ]},
     { path: 'secundario', component: ComponentNoPadraoComponent , children: [
         { path:'login', component: LoginComponent,outlet:'sec' },
@@ -24,4 +28,4 @@ const routes: Routes = [
     ,{ path: "**", redirectTo:"/principal/(pri:inicial)"}
   ];
 
-export const routing : ModuleWithProviders = RouterModule.forRoot(routes);
+export const routing : ModuleWithProviders = RouterModule.forRoot(routes,{onSameUrlNavigation:'reload'});

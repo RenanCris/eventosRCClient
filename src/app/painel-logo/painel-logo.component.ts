@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GeralService } from '../services/service.geral';
 
 @Component({
   selector: 'app-painel-logo',
@@ -7,7 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PainelLogoComponent implements OnInit {
 
-  constructor() { }
+  totalEventos : number;
+
+  constructor(private service: GeralService) { 
+
+    this.service.ObterTotalEventos().subscribe((dados) =>{
+      this.totalEventos = dados;
+    })
+  }
 
   ngOnInit() {
   }

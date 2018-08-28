@@ -1,0 +1,46 @@
+<div class="row">
+    <div class="col-md-9">
+        <div class="ibox">
+            <div class="ibox-title">
+                <span class="float-right">(<strong>{{total()}}</strong>) itens</span>
+                <h5><i class="fa fa-shopping-cart fa-1x"></i> Itens</h5>
+            </div>
+            <div class="ibox-content" *ngFor='let iten of itens; trackBy: index; let i=index'>
+              <div class="table-responsive">
+                  <table class="table shoping-cart-table">
+                      <tbody>
+                      <tr>
+                          <td width="90">
+                              <div class="">
+                                  <img alt="image" class="img-fluid" src="assets/img/{{getImg(iten.tipoEvento)}}-min.png">
+                              </div>
+                          </td>
+                          <td class="desc">
+                              <h3>
+                              <a  class="text-navy">
+                                {{iten.descricao}}
+                              </a>
+                              </h3>
+                              <dl class="small m-b-none">
+                                  <dt>{{iten.cidade}}</dt>
+                                  <dd>{{iten.endereco}}</dd>
+                              </dl>
+                              <dl class="small m-b-none">
+                                  <dt>Data do Evento</dt>
+                                  <dd>{{iten.data | date:'d/M/yyyy'}}.</dd>
+                              </dl>
+                          </td>
+                          <td>
+                              <h3>{{iten.valor  | currency:'BRL'}}</h3>
+                          </td>
+                      </tr>
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+      <app-cartao></app-cartao>
+    </div>
+</div>  

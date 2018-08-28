@@ -18,12 +18,10 @@ export class GeralService {
         this.http = _http;
         this.header = new Headers();
         this.header.append('Content-Type','application/json');
-        let _token = service.getToken()
-        if(_token)
-            this.header.append('Authorization','bearer ' + _token);
     }
 
     CadastrarEvento(evento : Evento) {
+        this.header.append('Authorization','bearer ' + localStorage.getItem('token'))
         return this.http.post(this.server.getServer() + "/evento/v1/create", evento,{headers: this.header}).pipe(
             map(res => res.json())
         );
@@ -35,6 +33,12 @@ export class GeralService {
         );
     }
 
+    ObterTotalEventos(){
+        return this.http.get(this.server.getServer() + "/evento/v1/count", {headers: this.header}).pipe(
+            map(res => res.json())
+        );
+    }
+
     CadastrarPessoa(pessoa : Pessoa) {
         return this.http.post(this.server.getServer() + "/pessoa/v1/create", pessoa,{headers: this.header}).pipe(
             map(res => res.json())
@@ -42,6 +46,7 @@ export class GeralService {
     }
 
     CadastrarCidade(cidade : Cidade) {
+        this.header.append('Authorization','bearer ' + localStorage.getItem('token'))
         return this.http.post(this.server.getServer() + "/cidade/v1/create", cidade,{headers: this.header}).pipe(
             map(res => res.json())
         );
@@ -52,4 +57,9 @@ export class GeralService {
             map(res => res.json())
         );
     }
+
+    ObterImagensEventos(descricao){
+        return descricao == "Esporte" ? "esporte" : descricao == "Show" ? "festa" : "teatro"
+    }
 }
+

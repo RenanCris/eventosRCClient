@@ -3,6 +3,7 @@ import { Evento } from './evento.model';
 import { GeralService } from '../services/service.geral';
 import {interval} from "rxjs";
 import { Cidade } from '../cadastro-cidade/cidade.model';
+import swal from 'sweetalert2/dist/sweetalert2.js'
 declare var $ : any;
 
 @Component({
@@ -32,6 +33,25 @@ export class CadastroEventoComponent implements OnInit {
   cadastrar(){
     this.service.CadastrarEvento(this.evento).subscribe((dados) => {
       this.eventos.push(this.evento);
+
+      const toast = swal({
+        type: 'success',
+        title: 'Confirmado...',
+        text: 'Cadastro Realizado!',
+        showConfirmButton: false,
+        timer: 1000,
+        allowOutsideClick : true
+      }, (err) =>{
+        const toast = swal({
+          type: 'error',
+          title: 'Ops...',
+          text: err._body,
+          showConfirmButton: false,
+          timer: 3000,
+          allowOutsideClick : true
+        })
+    })
+
     })
   }
 

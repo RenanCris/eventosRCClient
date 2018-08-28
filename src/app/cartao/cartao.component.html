@@ -1,0 +1,36 @@
+<div class="ibox">
+    <div class="ibox-title nopadding">
+        <h5><i class="fa fa-shopping-cart fa-1x"></i> Carrinho </h5>
+    </div>
+    <div class="ibox-content">
+        <span>
+            Total
+        </span>
+        <h2 class="font-bold">
+            {{totalValor() | currency:'BRL'}}
+        </h2>
+        <hr/>
+        <div class="float-right m-b-xs">
+            <i class="fa fa-cc-amex text-success fa-2x m-r-sm"></i>
+            <i class="fa fa-cc-mastercard text-warning fa-2x m-r-sm"></i>
+            <i class="fa fa-cc-discover text-danger fa-2x m-r-sm"></i>
+        </div>
+        <form #formCartao="ngForm">
+          <div class="m-t-sm">
+              <div class="form-group nopadding nomargin">
+                  <input type="text" class="form-control" [(ngModel)]="cartao.numero"  
+                  placeholder="Número Cartão" mask="9999 9999 9999 9999" maxlength="19" name="numero" required>
+              </div>
+              <div class="form-group nopadding nomargin">
+                  <input type="text" class="form-control" placeholder="CVV" mask="999" name="cvv" [(ngModel)]="cartao.cvv" required>
+              </div>
+          </div>
+        </form>
+          <div class="m-t-sm">
+              <div class="btn-group">
+                <button [disabled]="!formCartao.valid" (click)="realizarCompra()" class="btn btn-primary btn-sm"><i class="fa fa-shopping-cart"></i> Checkout</button>
+                <button (click)="cancelar()" class="btn btn-white btn-sm"> Cancelar</button>
+              </div>
+          </div>
+    </div>
+</div>

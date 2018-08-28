@@ -1,0 +1,14 @@
+a:hover, a:active, a:focus {
+    outline:0
+}
+
+div:hover, div:active, div:focus {
+    outline:0
+}
+
+.textoEndereco{
+    white-space: nowrap;
+    overflow: hidden; 
+    max-width: 290px;
+    text-overflow: "…";
+}

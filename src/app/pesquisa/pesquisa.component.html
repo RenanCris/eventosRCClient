@@ -10,9 +10,9 @@
                     <label class="font-normal">
                         <i class="fa fa-location-arrow"></i>&nbsp;Cidades</label>
                 </div>
-                <select class="chosen-select">
+                <select class="select"  (change)="filtrarCidade($event.target.value)">
                     <option value="">Selecione</option>
-                    <option value="{{cidade.descricao}}" *ngFor='let cidade of cidades; trackBy: index;'>{{cidade.descricao}}</option>
+                    <option value="{{cidade.descricao}}"  *ngFor='let cidade of cidades; trackBy: index;'>{{cidade.descricao}}</option>
                 </select>
             </div>
             <div class="col-md-6">
@@ -20,7 +20,7 @@
                     <label class="font-normal">
                         <i class="fa fa-calendar"></i>&nbsp;Tipo de Evento</label>
                 </div>
-                <select class="chosen-select">
+                <select class="select" (change)="filtrarEvento($event.target.value)">
                     <option value="">Selecione</option>
                     <option value="Esporte">Esporte</option>
                     <option value="Show">Show</option>

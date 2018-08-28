@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { GeralService } from '../services/service.geral';
 import { Evento } from '../cadastro-evento/evento.model';
 import {interval} from "rxjs";
+import { CartService } from '../services/service.carrinho';
+import { Item } from '../carrinho/item.model';
+import { FiltroService } from '../services/service.filtro';
 declare var  $: any;
 
 @Component({
@@ -13,7 +16,7 @@ export class ListaEventoComponent implements OnInit {
 
   eventos : Array<Evento>;
 
-  constructor(private service: GeralService) { 
+  constructor(private service: GeralService, private filtro: FiltroService) { 
     this.service.ObterEvento().subscribe((dados) => {
       
        this.eventos = dados.map((eleme)=>{
@@ -29,14 +32,13 @@ export class ListaEventoComponent implements OnInit {
           centerMode: true
         });
       })
-    }) 
+    })
   }
 
   private ObterFiguras(descricao){
-    return descricao == "Esporte" ? "esporte" : descricao == "Show" ? "festa" : "teatro"
+    return this.service.ObterImagensEventos(descricao);
   }
 
   ngOnInit() {
   }
-
 }

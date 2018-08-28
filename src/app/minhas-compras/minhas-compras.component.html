@@ -1,0 +1,37 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="ibox">
+            <div class="ibox-title">
+                <span class="float-right">Compras</span>
+            </div>
+            <div class="ibox-content" *ngFor='let compra of compras; trackBy: index; let i=index'>
+              <div class="table-responsive">
+                  <table class="table shoping-cart-table">
+                      <tbody>
+                      <tr>
+                          <td class="desc">
+                              <h3>
+                              <a  class="text-navy">
+                                {{compra.qtdEventos}}
+                              </a>
+                              </h3>
+                              <dl class="small m-b-none" *ngFor='let evento of compra.eventos; trackBy: index; let i=index'>
+                                  <dt>Evento</dt>
+                                  <dd><h4>{{evento.tipoEvento }} - {{evento.descricao }}</h4></dd>
+                              </dl>
+                              <dl class="small m-b-none">
+                                  <dt>Data da Compra</dt>
+                                  <dd>{{compra.dataCompra | date:'d/M/yyyy'}}.</dd>
+                              </dl>
+                          </td>
+                          <td>
+                              <h3>{{compra.valor  | currency:'BRL'}}</h3>
+                          </td>
+                      </tr>
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+        </div>
+    </div>
+</div>  
